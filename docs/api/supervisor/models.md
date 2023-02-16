@@ -254,3 +254,30 @@ The `content` key of a backup object contains the following keys:
 | by_id      | string or null | Udev by ID link                                                       |
 | attributes | dict           | A dict with pure udev device attributes for debug and understanding   |
 | children   | list           | A list of path to the children sysfs devices                          |
+
+## Drive
+
+| key            | type     | description                                             |
+| -------------- | -------- | --------------------------------------------------------|
+| vendor         | string   | Drive vendor                                            |
+| model          | string   | Drive model                                             |
+| serial         | string   | Drive serial number                                     |
+| id             | string   | Unique and persistent id for drive                      |
+| size           | int      | Size of the drive in bytes                              |
+| time_detected  | datetime | Time drive was detected by system                       |
+| connection_bus | string   | Physical connection bus of drive (usb, etc.)            |
+| seat           | string   | Identifier of seat drive is plugged into                |
+| removable      | boolean  | Is drive removable by user?                             |
+| ejectable      | boolean  | Is drive ejectable by system?                           |
+| filesystems    | list     | A list of [filesystem partitions](#filesystem) on drive |
+
+## Filesystem
+
+| key          | type    | description                                              |
+| ------------ | ------- | -------------------------------------------------------- |
+| device       | string  | Special device file for filesystem (e.g. `/dev/sda1`)    |
+| id           | string  | Unique and persistent id for filesystem                  |
+| size         | int     | Size of the filesystem in bytes                          |
+| name         | string  | Name of the filesystem (if known)                        |
+| system       | boolean | `true` if filesystem considered a system/internal device |
+| mount_points | list    | List of paths where filesystem is mounted.               |
